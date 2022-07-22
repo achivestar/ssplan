@@ -310,7 +310,7 @@
             data-aos="fade-up"
             data-aos-delay="100"
           >
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="col-md-6 col-sm-6 col-xs-6 col-6 portfolio-item filter-app">
               <div class="portfolio-wrap">
                 <img
                   src="/resources/assets/img/portfolio/portfolio-1.jpg"
@@ -332,7 +332,7 @@
               </div>
             </div>
 
-            <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="col-md-6 col-sm-6 col-xs-6 col-6 portfolio-item filter-web">
               <div class="portfolio-wrap">
                 <img
                   src="/resources/assets/img/portfolio/portfolio-2.jpg"
@@ -354,7 +354,7 @@
               </div>
             </div>
 
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="col-md-6 col-sm-6 col-xs-6 col-6 portfolio-item filter-app">
               <div class="portfolio-wrap">
                 <img
                   src="/resources/assets/img/portfolio/portfolio-3.jpg"
@@ -376,7 +376,7 @@
               </div>
             </div>
 
-            <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <div class="col-md-6 col-sm-6 col-xs-6 col-6 portfolio-item filter-card">
               <div class="portfolio-wrap">
                 <img
                   src="/resources/assets/img/portfolio/portfolio-4.jpg"
@@ -398,7 +398,7 @@
               </div>
             </div>
 
-            <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="col-md-6 col-sm-6 col-xs-6 col-6 portfolio-item filter-web">
               <div class="portfolio-wrap">
                 <img
                   src="/resources/assets/img/portfolio/portfolio-5.jpg"
@@ -420,7 +420,7 @@
               </div>
             </div>
 
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="col-md-6 col-sm-6 col-xs-6 col-6 portfolio-item filter-app">
               <div class="portfolio-wrap">
                 <img
                   src="/resources/assets/img/portfolio/portfolio-6.jpg"
@@ -442,7 +442,7 @@
               </div>
             </div>
 
-            <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <div class="col-md-6 col-sm-6 col-xs-6 col-6 portfolio-item filter-card">
               <div class="portfolio-wrap">
                 <img
                   src="/resources/assets/img/portfolio/portfolio-7.jpg"
@@ -464,7 +464,7 @@
               </div>
             </div>
 
-            <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <div class="col-md-6 col-sm-6 col-xs-6 col-6 portfolio-item filter-card">
               <div class="portfolio-wrap">
                 <img
                   src="/resources/assets/img/portfolio/portfolio-8.jpg"
@@ -486,7 +486,7 @@
               </div>
             </div>
 
-            <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="col-md-6 col-sm-6 col-xs-6 col-6 portfolio-item filter-web">
               <div class="portfolio-wrap">
                 <img
                   src="/resources/assets/img/portfolio/portfolio-9.jpg"
