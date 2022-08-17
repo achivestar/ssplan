@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pe.bluering.mappers.bannerMapper">
+
+	<insert id="Insert" parameterType="bannerVO" useGeneratedKeys="true" keyProperty="idx">
+		<![CDATA[
+			INSERT INTO ss_banner
+			(subject,contents,category,client,
+			saveFileName1, savedFileName1, originalFileName1, thumburl1,
+			saveFileName2, savedFileName2, originalFileName2, thumburl2,
+			saveFileName3, savedFileName3, originalFileName3, thumburl3,
+			regdate,updatedate)
+			VALUES 
+			(#{subject},#{contents},#{category},#{client},
+			#{saveFileName1},#{savedFileName1},#{originalFileName1}, #{thumburl1},
+			#{saveFileName2},#{savedFileName2},#{originalFileName2}, #{thumburl2},
+			#{saveFileName3},#{savedFileName3},#{originalFileName3}, #{thumburl3},
+			now(),now());
+		]]>
+	</insert>
+
+
+	<select id="getImgCount" resultType="int">
+		<![CDATA[
+			SELECT count(idx) as idx from ss_banner  where idx > 0
+		]]>
+	</select>
+	
+	<select id="getBannerCount" resultType="int">
+		<![CDATA[
+			SELECT count(idx) as idx from ss_banner WHERE showYn = 'y';
+		]]>
+	</select>
+	
+	<select id="getLastIdx" resultType="int">
+		<![CDATA[
+			SELECT max(idx) as idx from ss_banner where idx > 0 
+		]]>
+	</select>
+	
+	
+	 <select id="getBannerList" resultType="bannerVO">
+		<![CDATA[
+			SELECT * from ss_banner where idx > 0 and showYn = 'y' order by idx desc limit #{pageStart}, #{perPageNum};
+		]]>
+	</select>
+	
+	<select id="getBannerClientList" resultType="bannerVO">
+		<![CDATA[
+			SELECT * from ss_banner where idx > 0 and showYn = 'y' order by idx desc limit 3;
+		]]>
+	</select>
+	
+
+	<select id="countPaging" resultType="int">
+		<![CDATA[
+			SELECT count(idx) FROM ss_banner where idx > 0 and showYn = 'y'
+		]]>
+	</select>
+	
+	 
+	
+	<select id="bannerModify" parameterType="int" resultType="bannerVO">
+		<![CDATA[
+			SELECT * FROM ss_banner where idx = #{idx} and showYn = 'y'
+		]]>
+	</select>
+	
+	<select id="getSaveFileName1" parameterType="int"  resultType="String">
+			<![CDATA[
+				select saveFileName1 from ss_banner
+				where
+				idx = #{idx} and showYn = 'y';
+			]]>
+	</select>
+	
+	<select id="getOriginFileName1" parameterType="int"  resultType="String">
+			<![CDATA[
+				select saveFileName1 from ss_banner
+				where
+				idx = #{idx} and showYn = 'y';
+			]]>
+	</select>
+	
+	<select id="getSaveFileName2" parameterType="int"  resultType="String">
+			<![CDATA[
+				select saveFileName2 from ss_banner
+				where
+				idx = #{idx} and showYn = 'y';
+			]]>
+	</select>
+	
+	<select id="getOriginFileName2" parameterType="int"  resultType="String">
+			<![CDATA[
+				select saveFileName2 from ss_banner
+				where
+				idx = #{idx} and showYn = 'y';
+			]]>
+	</select>
+	
+	<select id="getSaveFileName3" parameterType="int"  resultType="String">
+			<![CDATA[
+				select saveFileName3 from ss_banner
+				where
+				idx = #{idx} and showYn = 'y';
+			]]>
+	</select>
+	
+	<select id="getOriginFileName3" parameterType="int"  resultType="String">
+			<![CDATA[
+				select saveFileName3 from ss_banner
+				where
+				idx = #{idx} and showYn = 'y';
+			]]>
+	</select>
+	
+	<select id="getDeleteFileName1" parameterType="int"  resultType="String">
+			<![CDATA[
+				select saveFileName1 from ss_banner
+				where
+				idx = #{idx} and showYn = 'y';
+			]]>
+	</select>
+	
+	<select id="getDeleteFileName2" parameterType="int"  resultType="String">
+			<![CDATA[
+				select saveFileName2 from ss_banner
+				where
+				idx = #{idx} and showYn = 'y';
+			]]>
+	</select>
+	
+	<select id="getDeleteFileName3" parameterType="int"  resultType="String">
+			<![CDATA[
+				select saveFileName3 from ss_banner
+				where
+				idx = #{idx} and showYn = 'y';
+			]]>
+	</select>
+	
+	<update id="bannerUpdate" parameterType="bannerVO">
+		<![CDATA[
+			UPDATE ss_banner SET 
+			subject = #{subject}, 
+			contents = #{contents}, 
+			client = #{client}, 
+			category = #{category}, 
+			saveFileName1 = #{saveFileName1},
+			originalFileName1 = #{originalFileName1}, 
+			savedFileName1 = #{savedFileName1}, 
+			thumburl1 = #{thumburl1}, 
+			saveFileName2 = #{saveFileName2},
+			originalFileName2 = #{originalFileName2}, 
+			savedFileName2 = #{savedFileName2}, 
+			thumburl2 = #{thumburl2}, 
+			saveFileName3 = #{saveFileName3},
+			originalFileName3 = #{originalFileName3}, 
+			savedFileName3 = #{savedFileName3}, 
+			thumburl3 = #{thumburl3}, 
+			updatedate = now()
+			WHERE
+			idx = #{idx} and showYn = 'y'
+		]]>
+	</update>
+	
+	
+	<update id="bannerDelete" parameterType="int">
+		<![CDATA[
+			UPDATE ss_banner SET 
+			showYn = 'n'
+			WHERE
+			idx = #{idx}
+		]]>
+	</update> 
+	
+	<!--
+	<select id="getDeleteFileName" parameterType="int"  resultType="String">
+			<![CDATA[
+				select saveFileName from ss_gallery
+				where
+				idx = #{idx} and showYn = 'y';
+			]]>
+	</select>
+	
+	<select id="getSaveFileName" parameterType="int"  resultType="String">
+			<![CDATA[
+				select saveFileName from ss_gallery
+				where
+				idx = #{idx} and showYn = 'y';
+			]]>
+	</select>
+	
+	<select id="getOriginFileName" parameterType="int"  resultType="String">
+			<![CDATA[
+				select saveFileName from ss_gallery
+				where
+				idx = #{idx} and showYn = 'y';
+			]]>
+	</select>
+	
+	
+	<update id="portfolioDelete" parameterType="int">
+		<![CDATA[
+			UPDATE ss_gallery SET 
+			showYn = 'n'
+			WHERE
+			idx = #{idx}
+		]]>
+	</update> -->
+	
+
+
+
+</mapper>

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>        
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>          
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,57 +46,8 @@
   <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
 
   <!-- ======= Header ======= -->
-  <header id="header">
-    <div class="d-flex flex-column">
-      <div class="profile">
-        <img
-          src="/resources/assets/img/logo.jpg"
-          alt=""
-          class="img-fluid rounded-circle"
-        />
-        <h1 class="text-light"><a href="/">SSPLAN</a></h1>
-        <div class="social-links mt-3 text-center">
-          <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-          <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-          <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-          <!-- <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a> -->
-        </div>
-      </div>
-
-      <nav id="navbar" class="nav-menu navbar">
-        <ul>
-          <li>
-            <a href="/#hero" class="nav-link scrollto "
-              ><i class="bx bx-home"></i> <span>Home</span></a
-            >
-          </li>
-          <li>
-            <a href="/#about" class="nav-link scrollto"
-              ><i class="bx bx-user"></i> <span>About</span></a
-            >
-          </li>
-          <!-- <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li> -->
-          <li>
-            <a href="/#services" class="nav-link scrollto"
-              ><i class="bx bx-server"></i> <span>Business Area </span></a
-            >
-          </li>
-          <li>
-            <a href="/#portfolio" class="nav-link scrollto "
-              ><i class="bx bx-book-content"></i> <span>Portfolio</span></a
-            >
-          </li>
-          <li>
-            <a href="/#contact" class="nav-link scrollto active"
-              ><i class="bx bx-envelope"></i> <span>Contact</span></a
-            >
-          </li>
-        </ul>
-      </nav>
-      <!-- .nav-menu -->
-    </div>
-  </header><!-- End Header -->
+   <%@include file="./include/header.jsp" %>
+   <!-- End Header -->
 
   <main id="main">
 
@@ -102,12 +56,15 @@
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Notice</h2>
+          <h2>공지사항</h2>
           <ol>
-            <li><a href="index.html">Home</a></li>
-            <li>Notice</li>
+            <li><a href="/">Home</a></li>
+            <li><span class="fw-bold">Notice</span></li>
           </ol>
         </div>
+        
+        
+        
 
       </div>
     </section><!-- End Breadcrumbs -->
@@ -120,15 +77,43 @@
 
           <div class="col-lg-12">
             <div class="portfolio-info">
-              <h3>공지사항 타이틀</h3>
-              <p>공지사항 내용</p>
-              <ul>
-                <li><strong>Write date</strong>: 2022.07.20</li>
+              <h3>${noticevo.subject }</h3>
+              <p>${noticevo.content }</p>
+              <ul class="mt-5">
+                <li><strong>date</strong>: ${noticevo.regdate }</li>
               </ul>
+              
+               
             </div>
            
           </div>
 
+        </div>
+        
+        <div class="row text-center gy-4 mt-5">
+	         <div class="col-lg-12">
+	         	 <div class="btn-group" role="group" aria-label="Basic outlined example">
+	         	 	<c:if test="${not empty isPrev}">
+	    				<c:forEach items="${isPrev}" var="isPrev">
+	    					<c:set var="regdate" value="${isPrev.regdate}"/>
+			    			<c:set var="TextValue" value="${isPrev.subject}"/>
+						  <a href="/noticeDetail?idx=${isPrev.idx}" class="btn btn-outline-secondary" role="group">이전<br> 
+						  ${fn:substring(TextValue,0,20)}</a>
+						  
+					  </c:forEach>
+					</c:if>
+					<a href="/notice" class="btn btn-outline-secondary" role="group">목록</a>
+					 <c:if test="${not empty isNext}">
+	    				<c:forEach items="${isNext}" var="isNext">
+	    					<c:set var="regdate" value="${isNext.regdate}"/>
+			    			<c:set var="TextValue" value="${isNext.subject}"/>
+						  <a href="/noticeDetail?idx=${isNext.idx}" class="btn btn-outline-secondary" role="group">다음<br> 
+						  ${fn:substring(TextValue,0,20)}</a>
+						  
+					  </c:forEach>
+					</c:if>
+				</div>
+	          </div>
         </div>
 
       </div>
@@ -137,14 +122,8 @@
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-  <footer id="footer">
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>ssplan</span></strong>
-      </div>
-      <div class="credits">Designed by <a href="#none">ssplan</a></div>
-    </div>
-  </footer><!-- End  Footer -->
+   <%@include file="./include/footer.jsp" %>
+   <!-- End  Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 

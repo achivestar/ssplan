@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pe.bluering.mappers.galleryMapper">
+
+	<insert id="Insert" parameterType="galleryVO" useGeneratedKeys="true" keyProperty="idx">
+		<![CDATA[
+			INSERT INTO ss_gallery 
+			(subject,contents,category,url,saveFileName, savedFileName, originalFileName, thumburl, regdate,updatedate)
+			VALUES 
+			(#{subject},#{contents},#{category},#{url},#{saveFileName},#{savedFileName},#{originalFileName}, #{thumburl}, now(),now());
+		]]>
+	</insert>
+
+
+	<select id="getImgCount" resultType="int">
+		<![CDATA[
+			SELECT count(idx) as idx from ss_gallery  where idx > 0
+		]]>
+	</select>
+	
+	<select id="getGalleryCount" resultType="int">
+		<![CDATA[
+			SELECT count(idx) as idx from ss_gallery WHERE showYn = 'y';
+		]]>
+	</select>
+	
+	
+	<select id="getLastIdx" resultType="int">
+		<![CDATA[
+			SELECT max(idx) as idx from ss_gallery where idx > 0 
+		]]>
+	</select>
+	
+	
+	<select id="getGalleryList" resultType="galleryVO">
+		<![CDATA[
+			SELECT * from ss_gallery where idx > 0 and showYn = 'y' order by idx desc limit #{pageStart}, #{perPageNum};
+		]]>
+	</select>
+	
+	<select id="getGalleryClientList" resultType="galleryVO">
+		<![CDATA[
+			SELECT * from ss_gallery where idx > 0 and showYn = 'y' order by idx desc limit 3;
+		]]>
+	</select>
+	
+
+	<select id="countPaging" resultType="int">
+		<![CDATA[
+			SELECT count(idx) FROM ss_gallery where idx > 0 and showYn = 'y'
+		]]>
+	</select>
+	
+	 
+	
+	<select id="galleryModify" parameterType="int" resultType="galleryVO">
+		<![CDATA[
+			SELECT * FROM ss_gallery where idx = #{idx} and showYn = 'y'
+		]]>
+	</select>
+	
+	
+	<update id="galleryUpdate" parameterType="galleryVO">
+		<![CDATA[
+			UPDATE ss_gallery SET 
+			subject = #{subject}, 
+			contents = #{contents}, 
+			url = #{url}, 
+			category = #{category}, 
+			saveFileName = #{saveFileName},
+			originalFileName = #{originalFileName}, 
+			savedFileName = #{savedFileName}, 
+			thumburl = #{thumburl}, 
+			updatedate = now()
+			WHERE
+			idx = #{idx} and showYn = 'y'
+		]]>
+	</update>
+	
+	
+	<select id="getDeleteFileName" parameterType="int"  resultType="String">
+			<![CDATA[
+				select saveFileName from ss_gallery
+				where
+				idx = #{idx} and showYn = 'y';
+			]]>
+	</select>
+	
+	<select id="getSaveFileName" parameterType="int"  resultType="String">
+			<![CDATA[
+				select saveFileName from ss_gallery
+				where
+				idx = #{idx} and showYn = 'y';
+			]]>
+	</select>
+	
+	<select id="getOriginFileName" parameterType="int"  resultType="String">
+			<![CDATA[
+				select saveFileName from ss_gallery
+				where
+				idx = #{idx} and showYn = 'y';
+			]]>
+	</select>
+	
+	
+	<update id="portfolioDelete" parameterType="int">
+		<![CDATA[
+			UPDATE ss_gallery SET 
+			showYn = 'n'
+			WHERE
+			idx = #{idx}
+		]]>
+	</update>
+	
+
+
+
+</mapper>

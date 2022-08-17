@@ -23,6 +23,25 @@
 	
 	<context:component-scan base-package="com.pe.bluering" />
 	
+	<beans:bean id="authInterceptor" class="com.pe.bluering.interceptor.AuthInterceptor"></beans:bean>
+	<beans:bean id="loginInterceptor" class="com.pe.bluering.interceptor.LoginInterceptor"></beans:bean>
+	
+	<interceptors>
+		<interceptor>
+			<mapping path="/admin/loginPost"/>
+			<beans:ref bean="loginInterceptor" />
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/admin/index"/>
+			<!-- <mapping path="/admin/notice"/>
+			<mapping path="/admin/noticeRegist"/> -->
+			
+			<beans:ref bean="authInterceptor" />
+			
+		</interceptor>
+	</interceptors>
+	
 	
 	
 </beans:beans>

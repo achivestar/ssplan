@@ -1,6 +1,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>         
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>         
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -75,6 +78,10 @@
       .service-carousel:hover .owl-nav .owl-next {
         opacity: 1;
       }
+      
+      table td.vt {
+    		vertical-align:middle
+       }
     </style>
   </head>
 
@@ -83,57 +90,7 @@
     <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
 
     <!-- ======= Header ======= -->
-    <header id="header">
-      <div class="d-flex flex-column">
-        <div class="profile">
-          <img
-            src="/resources/assets/img/logo.jpg"
-            alt=""
-            class="img-fluid rounded-circle"
-          />
-          <h1 class="text-light"><a href="/">SSPLAN</a></h1>
-          <div class="social-links mt-3 text-center">
-            <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-            <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-            <!-- <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-          <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a> -->
-          </div>
-        </div>
-
-        <nav id="navbar" class="nav-menu navbar">
-          <ul>
-            <li>
-              <a href="#hero" class="nav-link scrollto active"
-                ><i class="bx bx-home"></i> <span>Home</span></a
-              >
-            </li>
-            <li>
-              <a href="#about" class="nav-link scrollto"
-                ><i class="bx bx-user"></i> <span>About</span></a
-              >
-            </li>
-            <!-- <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li> -->
-            <li>
-              <a href="#services" class="nav-link scrollto"
-                ><i class="bx bx-server"></i> <span>Business Area</span></a
-              >
-            </li>
-            <li>
-              <a href="#portfolio" class="nav-link scrollto"
-                ><i class="bx bx-book-content"></i> <span>Portfolio</span></a
-              >
-            </li>
-            <li>
-              <a href="#contact" class="nav-link scrollto"
-                ><i class="bx bx-envelope"></i> <span>Contact</span></a
-              >
-            </li>
-          </ul>
-        </nav>
-        <!-- .nav-menu -->
-      </div>
-    </header>
+     <%@include file="./include/header.jsp" %>
     <!-- End Header -->
 
     <!-- ======= Hero Section ======= -->
@@ -147,7 +104,7 @@
            We're
           <span
             class="typed"
-            data-typed-items="Designer, Developer, Photographer"
+            data-typed-items="Designer, Developer"
           ></span>
         </p>
       </div>
@@ -244,51 +201,35 @@
         <div class="container">
           <div class="section-title">
             <h2>Portfolio</h2>
-            <p>
-              포트폴리오 대한 소개글 넣을 것 / 아니면 삭제해버려도 됨 / 밑에
-              이미지들은 임의임
-            </p>
+<!--             <p>
+              SS
+            </p> -->
           </div>
 
           <div class="row" data-aos="fade-up">
             <div class="col-lg-12 p-0 pt-5 mb-5 pt-lg-0">
               <div class="owl-carousel service-carousel position-relative">
+              
+              	<c:if test="${empty bannerList}">
+				 <p class="text-center vt">등록된 배너정보가 없습니다.</p>
+				</c:if>
+					<c:forEach items="${bannerList}" var="bannerList" varStatus="status">	
+		       <c:set var="regdate" value="${bannerList.regdate}"/>
+		       <c:set var="subject" value="${bannerList.subject}"/>
+              
+              
                 <div class="d-flex flex-column text-center bg mx-1">
                   <h3
                     class="display-3 font-weight-normal text-primary mb-3"
                   >
-                    <a href="/portfolioDetail"><img src="/resources/assets/img/portfolio/portfolio-1.jpg" /></a>
+                    <a href="/bannerDetail?idx=${bannerList.idx}"><img src="${bannerList.thumburl1 }" /></a>
                   </h3>
-                  <h5 class="mb-3"><a href="/portfolioDetail">현수막류</a></h5>
-                  <p class="m-0"><a href="/portfolioDetail">현수막류 설명문</a></p>
+                  <h5 class="mb-3"><a href="/bannerDetail?idx=${bannerList.idx}">${bannerList.subject }</a></h5>
+                 <%--  <p class="m-0"><a href="/bannerDetail?idx=${bannerList.idx}">현수막류 설명문</a></p> --%>
                 </div>
-                <div class="d-flex flex-column text-center bg mx-1">
-                  <h3
-                    class="display-3 font-weight-normal text-primary mb-3"
-                  >
-                  <a href="/portfolioDetail"><img src="/resources/assets/img/portfolio/portfolio-2.jpg" /></a>
-                  </h3>
-                  <h5 class="mb-3"><a href="/portfolioDetail">간판류</a></h5>
-                  <p class="m-0"><a href="/portfolioDetail">간판류 설명문</a></p>
-                </div>
-                <div class="d-flex flex-column text-center bg mx-1">
-                  <h3
-                    class="display-3 font-weight-normal text-primary mb-3"
-                  >
-                  <a href="/portfolioDetail"><img src="/resources/assets/img/portfolio/portfolio-3.jpg" /></a>
-                  </h3>
-                  <h5 class="mb-3"><a href="/portfolioDetail">전시행사품</a></h5>
-                  <p class="m-0"><a href="/portfolioDetail">전시행사품 설명문</a></p>
-                </div>
-                <div class="d-flex flex-column text-center bg mx-1">
-                  <h3
-                    class="display-3 font-weight-normal text-primary mb-3">
-                  <a href="/portfolioDetail"><img src="/resources/assets/img/portfolio/portfolio-4.jpg" /></a>
-                  </h3>
-                  <h5 class="mb-3"><a href="/portfolioDetail">랩핑</a></h5>
-                  <p class="m-0"><a href="/portfolioDetail">랩핑 설명문</a></p>
-                </div>
-
+                
+                </c:forEach>
+ 
               
               </div>
             </div>
@@ -296,11 +237,11 @@
             <div class="col-lg-12 d-flex justify-content-center mt-5">
               <ul id="portfolio-flters">
                 <li data-filter="*" class="filter-active">All</li>
-                <li data-filter=".filter-app">현수막</li>
-                <li data-filter=".filter-card">간판</li>
-                <li data-filter=".filter-web">조형물</li>
-                <li data-filter=".filter-web2">행사.전시</li>
-                <li data-filter=".filter-web3">ETC</li>
+                <li data-filter=".filter-1">현수막</li>
+                <li data-filter=".filter-2">간판</li>
+                <li data-filter=".filter-3">조형물</li>
+                <li data-filter=".filter-4">행사.전시</li>
+                <li data-filter=".filter-5">ETC</li>
               </ul>
             </div>
           </div>
@@ -310,203 +251,37 @@
             data-aos="fade-up"
             data-aos-delay="100"
           >
-            <div class="col-md-6 col-sm-6 col-xs-6 col-6 portfolio-item filter-app">
-              <div class="portfolio-wrap">
-                <img
-                  src="/resources/assets/img/portfolio/portfolio-1.jpg"
-                  class="img-fluid"
-                  alt=""
-                />
-                <div class="portfolio-links">
-                  <a
-                    href="/resources/assets/img/portfolio/portfolio-1.jpg"
-                    data-gallery="portfolioGallery"
-                    class="portfolio-lightbox"
-                    title="App 1"
-                    ><i class="bx bx-plus"></i
-                  ></a>
-                  <a href="#none" title="More Details"
-                    ><i class="bx bxl-instagram"></i
-                  ></a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-6 col-sm-6 col-xs-6 col-6 portfolio-item filter-web">
-              <div class="portfolio-wrap">
-                <img
-                  src="/resources/assets/img/portfolio/portfolio-2.jpg"
-                  class="img-fluid"
-                  alt=""
-                />
-                <div class="portfolio-links">
-                  <a
-                    href="/resources/assets/img/portfolio/portfolio-2.jpg"
-                    data-gallery="portfolioGallery"
-                    class="portfolio-lightbox"
-                    title="Web 3"
-                    ><i class="bx bx-plus"></i
-                  ></a>
-                  <a href="#none" title="More Details"
-                    ><i class="bx bxl-instagram"></i
-                  ></a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-6 col-sm-6 col-xs-6 col-6 portfolio-item filter-app">
-              <div class="portfolio-wrap">
-                <img
-                  src="/resources/assets/img/portfolio/portfolio-3.jpg"
-                  class="img-fluid"
-                  alt=""
-                />
-                <div class="portfolio-links">
-                  <a
-                    href="/resources/assets/img/portfolio/portfolio-3.jpg"
-                    data-gallery="portfolioGallery"
-                    class="portfolio-lightbox"
-                    title="App 2"
-                    ><i class="bx bx-plus"></i
-                  ></a>
-                  <a href="#none" title="More Details"
-                    ><i class="bx bxl-instagram"></i
-                  ></a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-6 col-sm-6 col-xs-6 col-6 portfolio-item filter-card">
-              <div class="portfolio-wrap">
-                <img
-                  src="/resources/assets/img/portfolio/portfolio-4.jpg"
-                  class="img-fluid"
-                  alt=""
-                />
-                <div class="portfolio-links">
-                  <a
-                    href="/resources/assets/img/portfolio/portfolio-4.jpg"
-                    data-gallery="portfolioGallery"
-                    class="portfolio-lightbox"
-                    title="Card 2"
-                    ><i class="bx bx-plus"></i
-                  ></a>
-                  <a href="#none" title="More Details"
-                    ><i class="bx bxl-instagram"></i
-                  ></a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-6 col-sm-6 col-xs-6 col-6 portfolio-item filter-web">
-              <div class="portfolio-wrap">
-                <img
-                  src="/resources/assets/img/portfolio/portfolio-5.jpg"
-                  class="img-fluid"
-                  alt=""
-                />
-                <div class="portfolio-links">
-                  <a
-                    href="/resources/assets/img/portfolio/portfolio-5.jpg"
-                    data-gallery="portfolioGallery"
-                    class="portfolio-lightbox"
-                    title="Web 2"
-                    ><i class="bx bx-plus"></i
-                  ></a>
-                  <a href="#none" title="More Details"
-                    ><i class="bx bxl-instagram"></i
-                  ></a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-6 col-sm-6 col-xs-6 col-6 portfolio-item filter-app">
-              <div class="portfolio-wrap">
-                <img
-                  src="/resources/assets/img/portfolio/portfolio-6.jpg"
-                  class="img-fluid"
-                  alt=""
-                />
-                <div class="portfolio-links">
-                  <a
-                    href="/resources/assets/img/portfolio/portfolio-6.jpg"
-                    data-gallery="portfolioGallery"
-                    class="portfolio-lightbox"
-                    title="App 3"
-                    ><i class="bx bx-plus"></i
-                  ></a>
-                  <a href="#none" title="More Details"
-                    ><i class="bx bxl-instagram"></i
-                  ></a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-6 col-sm-6 col-xs-6 col-6 portfolio-item filter-card">
-              <div class="portfolio-wrap">
-                <img
-                  src="/resources/assets/img/portfolio/portfolio-7.jpg"
-                  class="img-fluid"
-                  alt=""
-                />
-                <div class="portfolio-links">
-                  <a
-                    href="/resources/assets/img/portfolio/portfolio-7.jpg"
-                    data-gallery="portfolioGallery"
-                    class="portfolio-lightbox"
-                    title="Card 1"
-                    ><i class="bx bx-plus"></i
-                  ></a>
-                  <a href="#none" title="More Details"
-                    ><i class="bx bxl-instagram"></i
-                  ></a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-6 col-sm-6 col-xs-6 col-6 portfolio-item filter-card">
-              <div class="portfolio-wrap">
-                <img
-                  src="/resources/assets/img/portfolio/portfolio-8.jpg"
-                  class="img-fluid"
-                  alt=""
-                />
-                <div class="portfolio-links">
-                  <a
-                    href="/resources/assets/img/portfolio/portfolio-8.jpg"
-                    data-gallery="portfolioGallery"
-                    class="portfolio-lightbox"
-                    title="Card 3"
-                    ><i class="bx bx-plus"></i
-                  ></a>
-                  <a href="#none" title="More Details"
-                    ><i class="bx bxl-instagram"></i
-                  ></a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-6 col-sm-6 col-xs-6 col-6 portfolio-item filter-web">
-              <div class="portfolio-wrap">
-                <img
-                  src="/resources/assets/img/portfolio/portfolio-9.jpg"
-                  class="img-fluid"
-                  alt=""
-                />
-                <div class="portfolio-links">
-                  <a
-                    href="/resources/assets/img/portfolio/portfolio-9.jpg"
-                    data-gallery="portfolioGallery"
-                    class="portfolio-lightbox"
-                    title="Web 3"
-                    ><i class="bx bx-plus"></i
-                  ></a>
-                  <a href="#none" title="More Details"
-                    ><i class="bx bxl-instagram"></i
-                  ></a>
-                </div>
-              </div>
-            </div>
+          
+          	<c:if test="${empty galleryList}">
+				 <p class="text-center vt">등록된 포트폴리오가 없습니다.</p>
+			</c:if>
+			<c:forEach items="${galleryList}" var="galleryList" varStatus="status">	
+		       <c:set var="regdate" value="${galleryList.regdate}"/>
+		       <c:set var="subject" value="${galleryList.subject}"/>
+				<div class="col-md-3 col-sm-6 col-xs-6 col-6 portfolio-item filter-${galleryList.category }">
+	              <div class="portfolio-wrap">
+	                <img
+	                  src="${galleryList.thumburl }"
+	                  class="img-fluid"
+	                  alt=""
+	                />
+	                <div class="portfolio-links">
+	                  <a
+	                    href="${galleryList.savedFileName }"
+	                    data-gallery="portfolioGallery"
+	                    class="portfolio-lightbox"
+	                    title="${galleryList.contents }"
+	                    ><i class="bx bx-plus"></i
+	                  ></a>
+	                  <a href="${galleryList.url }"  target="_blank" title="More Details"
+	                    ><i class="bx bxl-instagram"></i
+	                  ></a>
+	                </div>
+	              </div>
+	            </div>
+			</c:forEach>	   
+      
+      
           </div>
         </div>
       </section>
@@ -526,32 +301,27 @@
             <div class="col-lg-12 mt-5 mb-5 mt-lg-0 d-flex align-items-stretch">
               <table class="table">
                 <thead>
-                  <tr>
-                    <th scope="col">#</th>
+                  <tr class="text-dark text-center">
                     <th scope="col">제목</th>
                     <th scope="col">작성자</th>
                     <th scope="col">작성일</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td><a href="/noticeDetail">Test1</a></td>
-                    <td>관리자</td>
-                    <td>2022.07.19</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td><a href="/noticeDetail">Test2</a></td>
-                    <td>관리자</td>
-                    <td>2022.07.19</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td><a href="/noticeDetail">Test3</a></td>
-                    <td>관리자</td>
-                    <td>2022.07.17</td>
-                  </tr>
+                <tbody class="text-dark text-center">
+                 <c:if test="${empty noticeList}">
+						        <tr><td colspan="3" class="text-center vt">등록된 공지글이 없습니다.</td></tr>
+							</c:if>
+						    <c:forEach items="${noticeList}" var="noticeList" varStatus="status">	
+						       <c:set var="regdate" value="${noticeList.regdate}"/>
+						       <c:set var="subject" value="${noticeList.subject}"/>
+							    <tr>
+							      <td class="vt"><a href="/noticeDetail?idx=${noticeList.idx}">${fn:substring(subject,0,30)}...</a></td>
+							      <td class="vt">
+								     관리자
+							      </td>
+							      <td class="vt">${fn:substring(regdate,0,20) }</td>
+							    </tr>
+				</c:forEach>	   
                 </tbody>
               </table>
             </div>
@@ -588,12 +358,7 @@
             </div>
 
             <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-              <form
-                action="forms/contact.php"
-                method="post"
-                role="form"
-                class="php-email-form"
-              >
+              <form id="form" class="php-email-form">
                 <div class="row">
                   <div class="form-group col-md-6">
                     <label for="name">Your Name</label>
@@ -631,6 +396,7 @@
                   <textarea
                     class="form-control"
                     name="message"
+                    id="message"
                     rows="10"
                     required
                   ></textarea>
@@ -643,7 +409,7 @@
                   </div>
                 </div>
                 <div class="text-center">
-                  <button type="submit">Send Message</button>
+                  <input type="submit" id="save" value="Send Message" class="btn btn-primary">
                 </div>
               </form>
             </div>
@@ -655,14 +421,7 @@
     <!-- End #main -->
 
     <!-- ======= Footer ======= -->
-    <footer id="footer">
-      <div class="container">
-        <div class="copyright">
-          &copy; Copyright <strong><span>ssplan</span></strong>
-        </div>
-        <div class="credits">Designed by <a href="#none">ssplan</a></div>
-      </div>
-    </footer>
+     <%@include file="./include/footer.jsp" %>
     <!-- End  Footer -->
 
     <a
@@ -702,7 +461,76 @@
       }).render();
 
       $(document).ready(function () {
+    	  
         $(".owl-carousel").owlCarousel();
+        
+
+		 var regExp = /\w+([-+.]\w+)*@\w+([-.]\w+)*\.[a-zA-Z]{2,4}$/;
+		  // 검증에 사용할 정규식 변수 regExp에 저장
+ 
+		$("#save").click(function(e){
+
+				if($("#name").val()==""){
+					alert("이름을 입력해 주세요");
+					$("#name").focus();
+					 return false;
+				}else if($("#email").val()==""){
+					alert("이메일을 입력해 주세요");
+					$("#email").focus();
+					 return false;
+				}else if($("#email").val().match(regExp) == null){
+					alert("이메일 양식을 지켜 주세요");
+					$("#email").focus();
+					 return false;
+				}else if($("#subject").val()==""){
+					 alert("제목을 입력해 주세요.");
+					 $("#subject").focus();
+				     return false;
+				}else if($("#name").val()==""){
+					alert("이름을 입력해 주세요");
+					$("#name").focus();
+					 return false;
+				}else if($("#message").val()==""){
+					alert("내용을 입력해 주세요");
+					$("#message").focus();
+					 return false;
+				}else{
+					 var form = new FormData(document.getElementById('form'));
+						$.ajax({
+						    type: 'POST',
+							url: "/contactRegist", 
+							data: form,
+							dataType: 'html',
+							processData: false, 
+							contentType: false, 		
+							enctype: 'multipart/form-data',
+							success: function(data){
+								if(data == 'success') {
+									alert("문의가 등록되었습니다. \n 빠른 시일내에 이메일로 답변을 드리겠습니다.");
+									location.href="/";
+								}
+								
+							}
+							,beforeSend : function(){
+								$(".spinner").removeClass("displayLoding");
+							},
+							complete:function(){
+								$(".spinner").addClass("displayLoding");	
+							},error : function(data){
+								if(data == 'error') {
+									alert("문의 등록에 실패 했습니다. 다시 시도해 보세요.");
+									location.href="/";
+								}
+								
+							}
+						}) ;
+						//$("#msform").submit();
+					}
+						
+				
+				});//save btn end
+		        
+        
       });
 
       // Service carousel
