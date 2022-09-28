@@ -117,14 +117,23 @@
         <div class="container">
           <div class="section-title">
             <h2>About</h2>
-            <p>회사 소개 문구 넣을 것.</p>
-            <p>
-              ex) 엠에스에드는 설립이래 개인 제작물 및 제주도 다양한 행사.축제
-              그리고 국내 대기업의 각종 행사에.. 그리고…….. 제작 설치하는
-              종합광고 대행사 입니다. 제주도 내 이 분야 대표가 되기 위하여 항상
-              노력하고 최선을 다하고 있습니다. VALUE : 고객의 만족. 우수한 품질.
-              최고의 노하우
-            </p>
+      
+              <div class="alert alert-white" role="alert">
+				  <h4 class="alert-heading"><span style="color:#149ddd">SSPLAN</span></h4>
+				  <p style="line-height:2.5"><span style="font-size:20px">설</span>립 이래 개인 제작물 및 제주도의 다양한<br>
+				  행사 및 축제는 물론 국내 대기업의 각종 행사에 참여 하여<br>
+				  <span style="text-decoration:underline">전시기획 및 디자인 / 제작 설치하는 종합광고 대행사 입니다.</span> <br>
+				  제주도 내 이 분야 대표가 되기 위하여 항상
+	              노력하고 최선을 다하고 있습니다.</p>
+				  <hr>
+				  <p class="mb-0"  style="line-height:2.5"> 
+				  <h4><span style="color:#149ddd">VALUE</span></h4>
+				  <ul style="line-height:2.5">
+				  	<li>고객의 만족</li>
+				  	<li>우수한 품질</li>
+				  	<li>최고의 노하우</li>
+				  </ul></p>
+				</div>
           </div>
         </div>
       </section>
@@ -134,17 +143,14 @@
         <div class="container">
           <div class="section-title">
             <h2>Business Area</h2>
-            <p>
-              사업 영역을 넣을 것. 표를 작성하든 이미지를 넣든 텍스트를 넣든
-              자유롭게
-            </p>
+
           </div>
 
           <div class="row">
             <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
               <div class="icon"><i class="bi bi-briefcase"></i></div>
-              <h4 class="title"><a href="">사업영역1</a></h4>
-              <p class="description">사업영역1 소개</p>
+              <h4 class="title">DESIGN</h4>
+              <p class="description">패키지디자인 기획 및 디자인 / 인쇄 제작</p>
             </div>
             <div
               class="col-lg-4 col-md-6 icon-box"
@@ -152,8 +158,8 @@
               data-aos-delay="100"
             >
               <div class="icon"><i class="bi bi-card-checklist"></i></div>
-              <h4 class="title"><a href="">사업영역2</a></h4>
-              <p class="description">사업영역2 소개</p>
+              <h4 class="title">EXHIBITION DESIGN</h4>
+              <p class="description">MICE,국제회의,포럼,박람회,기업행사,전시기획 및 디자인 / 제작</p>
             </div>
             <div
               class="col-lg-4 col-md-6 icon-box"
@@ -161,8 +167,8 @@
               data-aos-delay="200"
             >
               <div class="icon"><i class="bi bi-bar-chart"></i></div>
-              <h4 class="title"><a href="">사업영역3</a></h4>
-              <p class="description">사업영역3 소개</p>
+              <h4 class="title">LEAFLET/BROCHURE DESIGN</h4>
+              <p class="description">리플렛, 브로셔, 명함,  디자인 기획 / 인쇄</p>
             </div>
             <div
               class="col-lg-4 col-md-6 icon-box"
@@ -170,8 +176,9 @@
               data-aos-delay="300"
             >
               <div class="icon"><i class="bi bi-binoculars"></i></div>
-              <h4 class="title"><a href="">사업영역4</a></h4>
-              <p class="description">사업영역4 소개</p>
+              <h4 class="title">PRODUCE(제작물)</h4>
+              <p class="description">행사,개인 현수막/베너/게시대
+</p>
             </div>
             <div
               class="col-lg-4 col-md-6 icon-box"
@@ -179,8 +186,8 @@
               data-aos-delay="400"
             >
               <div class="icon"><i class="bi bi-brightness-high"></i></div>
-              <h4 class="title"><a href="">사업영역5</a></h4>
-              <p class="description">사업영역5 소개</p>
+              <h4 class="title">랩핑</h4>
+              <p class="description">선거차량제작, 차량랩핑</p>
             </div>
             <div
               class="col-lg-4 col-md-6 icon-box"
@@ -188,8 +195,10 @@
               data-aos-delay="500"
             >
               <div class="icon"><i class="bi bi-calendar4-week"></i></div>
-              <h4 class="title"><a href="">사업영역6</a></h4>
-              <p class="description">사업영역6 소개</p>
+              <h4 class="title"><a href="">광고물(간판)
+</a></h4>
+              <p class="description">채널, 부식, 내부사인, 외부사인
+</p>
             </div>
           </div>
         </div>
@@ -207,7 +216,7 @@
           </div>
 
           <div class="row" data-aos="fade-up">
-            <div class="col-lg-12 p-0 pt-5 mb-5 pt-lg-0">
+           <%--  <div class="col-lg-12 p-0 pt-5 mb-5 pt-lg-0">
               <div class="owl-carousel service-carousel position-relative">
               
               	<c:if test="${empty bannerList}">
@@ -225,14 +234,14 @@
                     <a href="/bannerDetail?idx=${bannerList.idx}"><img src="${bannerList.thumburl1 }" /></a>
                   </h3>
                   <h5 class="mb-3"><a href="/bannerDetail?idx=${bannerList.idx}">${bannerList.subject }</a></h5>
-                 <%--  <p class="m-0"><a href="/bannerDetail?idx=${bannerList.idx}">현수막류 설명문</a></p> --%>
+                  <p class="m-0"><a href="/bannerDetail?idx=${bannerList.idx}">현수막류 설명문</a></p>
                 </div>
                 
                 </c:forEach>
  
               
               </div>
-            </div>
+            </div> --%>
 
             <div class="col-lg-12 d-flex justify-content-center mt-5">
               <ul id="portfolio-flters">
@@ -291,7 +300,7 @@
       <section id="contact" class="contact">
         <div class="container">
           <div class="section-title">
-            <h2>Contact</h2>
+            <h2>Notice</h2>
             <p>
             
             </p>
@@ -299,7 +308,7 @@
 
           <div class="row" data-aos="fade-in">
             <div class="col-lg-12 mt-5 mb-5 mt-lg-0 d-flex align-items-stretch">
-              <table class="table">
+              <table class="table" >
                 <thead>
                   <tr class="text-dark text-center">
                     <th scope="col">제목</th>

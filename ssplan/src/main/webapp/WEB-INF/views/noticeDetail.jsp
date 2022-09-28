@@ -102,7 +102,7 @@
 						  
 					  </c:forEach>
 					</c:if>
-					<a href="/notice" class="btn btn-outline-secondary" role="group">목록</a>
+					<a href="/#contact" class="btn btn-outline-secondary" role="group">목록</a>
 					 <c:if test="${not empty isNext}">
 	    				<c:forEach items="${isNext}" var="isNext">
 	    					<c:set var="regdate" value="${isNext.regdate}"/>

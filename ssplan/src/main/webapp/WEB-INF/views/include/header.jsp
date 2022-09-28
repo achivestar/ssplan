@@ -4,11 +4,11 @@
 <header id="header">
       <div class="d-flex flex-column">
         <div class="profile">
-          <img
+         <a href="/"> <img
             src="/resources/assets/img/logo.jpg"
             alt=""
             class="img-fluid rounded-circle"
-          />
+          /></a>
           <h1 class="text-light"><a href="/">SSPLAN</a></h1>
           <div class="social-links mt-3 text-center">
             <!-- <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
@@ -44,7 +44,7 @@
             </li>
             <li>
               <a href="/#contact" class="nav-link scrollto"
-                ><i class="bx bx-envelope"></i> <span>Contact</span></a
+                ><i class="bx bx-envelope"></i> <span>Notice</span></a
               >
             </li>
           </ul>

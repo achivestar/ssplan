@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pe.bluering.mappers.userMapper">
+
+	<select id="login" resultType="userVO">
+		<![CDATA[
+			select uid, upw, uname from ss_user where uid = #{uid} and upw = #{upw}
+		]]>
+	</select>
+	
+	
+	<select id="confirmPw" resultType="String" parameterType="String">
+		<![CDATA[
+			select upw from ss_user where upw = #{upw}
+		]]>
+	</select>
+	
+	
+	
+	<update id="changePw" parameterType="String">
+		<![CDATA[
+			UPDATE ss_user SET 
+			upw = #{cpw} 
+			WHERE uname = 'admin'
+		]]>
+	</update>
+	
+</mapper>

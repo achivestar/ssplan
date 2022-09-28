@@ -3,7 +3,7 @@
       <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
             <br><br>
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin/index">
                 
                     <img class="rounded-circle"
                                     src="/resources/assets/img/logo.jpg" style="width:60%">
@@ -31,8 +31,16 @@
                 </a>
 
             </li>
+            
+             <li class="nav-item">
+                <a class="nav-link" href="/admin/portfolio" >
+                    <i class="fas fa-circle"></i>
+                    <span>포트폴리오</span>
+                </a>
 
-            <li class="nav-item">
+            </li>
+
+           <!--  <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-circle"></i>
@@ -45,7 +53,7 @@
                         <a class="collapse-item" href="/admin/banner">롤링배너 업로드</a>
                     </div>
                 </div> 
-            </li>
+            </li> -->
             
              <li class="nav-item ">
                 <a class="nav-link" href="/admin/contact" >

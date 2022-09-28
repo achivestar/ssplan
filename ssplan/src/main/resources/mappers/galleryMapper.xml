@@ -40,7 +40,7 @@
 	
 	<select id="getGalleryClientList" resultType="galleryVO">
 		<![CDATA[
-			SELECT * from ss_gallery where idx > 0 and showYn = 'y' order by idx desc limit 3;
+			SELECT * from ss_gallery where idx > 0 and showYn = 'y' order by idx desc limit 5;
 		]]>
 	</select>
 	

@@ -16,12 +16,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.JsonObject;
-import com.pe.bluering.domain.BannerVO;
 import com.pe.bluering.domain.ContactVO;
 import com.pe.bluering.domain.GalleryVO;
 import com.pe.bluering.domain.NoticeVO;
 import com.pe.bluering.domain.PageMaker;
-import com.pe.bluering.service.BannerService;
 import com.pe.bluering.service.ContactService;
 import com.pe.bluering.service.GalleryService;
 import com.pe.bluering.service.NoticeService;
@@ -42,8 +40,6 @@ public class HomeController {
 	@Autowired
 	private GalleryService galleryservice;
 	
-	@Autowired
-	private BannerService bannerservice;
 	
 	@Autowired
 	private ContactService contactservice;
@@ -56,11 +52,11 @@ public class HomeController {
 		
 		List<NoticeVO> noticeList = noticeservice.getNoticeList();
 		List<GalleryVO> galleryList = galleryservice.getGalleryList();
-		List<BannerVO> bannerList = bannerservice.getBannerList();
+		
 		 
 		model.addAttribute("noticeList", noticeList);
 		model.addAttribute("galleryList", galleryList);
-		model.addAttribute("bannerList", bannerList);
+
 		
 		return "index";
 	}
@@ -87,15 +83,15 @@ public class HomeController {
 	}
 	
 	
-	@RequestMapping(value = "/bannerDetail", method = RequestMethod.GET)
-	public String bannerDetail(BannerVO bannervo, Locale locale, Model model, @RequestParam("idx") int idx) {
-	
-		  bannervo = bannerservice.bannerModify(idx);
-		  model.addAttribute("bannervo", bannervo);
-		  
-		  return "bannerDetail";
-	}
-	
+//	@RequestMapping(value = "/bannerDetail", method = RequestMethod.GET)
+//	public String bannerDetail(BannerVO bannervo, Locale locale, Model model, @RequestParam("idx") int idx) {
+//	
+//		  bannervo = bannerservice.bannerModify(idx);
+//		  model.addAttribute("bannervo", bannervo);
+//		  
+//		  return "bannerDetail";
+//	}
+//	
 	
 	
 	

@@ -102,8 +102,7 @@
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link" href="/admin/logout">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">로그아웃</span>
                                
                             </a>
@@ -118,101 +117,83 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid" >
                    
-                    <div class="alert alert-info" role="alert">
-						공지사항 등록 현황 <br>
-						<span class="badge rounded-pill bg-info">${noticeCount }</span>건 등록 중 <a href="#" class="alert-link"><span class="float-right">더보기</span></a> 
-   					</div>
+                   <div class="row">
+                   		<div class="col-6">
+                   			  <div class="alert alert-info" role="alert">
+								공지사항 등록 현황 <br>
+							<span class="badge rounded-pill bg-danger text-white">${noticeCount }</span>건 등록 중 <a href="/admin/notice" class="alert-link"><span class="float-right">더보기</span></a> 
+   						</div>
                    
-                    <table class="table mb-5">
-						  <thead class="table-success text-dark text-center">
-						    <tr>
-						      <th scope="col">#</th>
-						      <th scope="col">제목</th>
-						      <th scope="col">썸네일</th>
-						      <th scope="col">작성일</th>
-						      <th scope="col">관리</th>
-						    </tr>
-						  </thead>
-						  <tbody class="text-dark text-center">
-						  	<c:if test="${empty noticeList}">
-						        <tr><td colspan="5" class="text-center vt">등록된 공지글이 없습니다.</td></tr>
-							</c:if>
-						    <c:forEach items="${noticeList}" var="noticeList" varStatus="status">	
-						       <c:set var="regdate" value="${noticeList.regdate}"/>
-						       <c:set var="subject" value="${noticeList.subject}"/>
+	                    <table class="table mb-5">
+							  <thead class="table-success text-dark text-center">
 							    <tr>
-							      <td class="vt" scope="row">${noticeList.idx}</td>
-							      <td class="vt"><a href="/admin/noticeModify?idx=${noticeList.idx}">${fn:substring(subject,0,30)}...</a></td>
-							      <td class="vt">
-								      <c:if test="${not empty noticeList.thumburl}">
-								     	 <img src="${noticeList.thumburl }"  style="width:80px;height:50px"/>
-								      </c:if>
-							      </td>
-							      <td class="vt">${fn:substring(regdate,0,10) }</td>
-							      <td class="vt"><a href="/admin/noticeModify?idx=${noticeList.idx}" class="btn btn-info">관리</a></td>
+							      <th scope="col">#</th>
+							      <th scope="col">제목</th>
+							      <th scope="col">작성일</th>
+							      <th scope="col">수정</th>
 							    </tr>
-							</c:forEach>	   
-						  </tbody>
-						</table>
+							  </thead>
+							  <tbody class="text-dark text-center">
+							  	<c:if test="${empty noticeList}">
+							        <tr><td colspan="5" class="text-center vt">등록된 공지글이 없습니다.</td></tr>
+								</c:if>
+							    <c:forEach items="${noticeList}" var="noticeList" varStatus="status">	
+							       <c:set var="regdate" value="${noticeList.regdate}"/>
+							       <c:set var="subject" value="${noticeList.subject}"/>
+								    <tr>
+								      <td class="vt" scope="row">${noticeList.idx}</td>
+								      <td class="vt"><a href="/admin/noticeModify?idx=${noticeList.idx}">${fn:substring(subject,0,30)}...</a></td>
+								      <td class="vt">${fn:substring(regdate,0,10) }</td>
+								      <td class="vt"><a href="/admin/noticeModify?idx=${noticeList.idx}" class="btn btn-info">관리</a></td>
+								    </tr>
+								</c:forEach>	   
+							  </tbody>
+							</table>
+                   		</div>
+                   		
+                   		
+                   		<div class="col-6">
+                   			<div class="alert alert-primary" role="alert">
+								포트폴리오 등록 현황 <br>
+								<span class="badge rounded-pill bg-danger text-white">${galleryCount }</span>건 등록 중 <a href="/admin/portfolio" class="alert-link"><span class="float-right">더보기</span></a> 
+  							</div>
+		                     <table class="table mb-5">
+								  <thead class="table-success text-dark text-center">
+								    <tr>
+								      <th scope="col">#</th>
+								      <th scope="col">썸네일</th>
+								      <th scope="col">등록일</th>
+								      <th scope="col">수정</th>
+								    </tr>
+								  </thead>
+								  <tbody class="text-dark text-center">
+								   <c:if test="${empty galleryList}">
+								        <tr><td colspan="5" class="text-center vt">등록된 포트폴리오 갤러리가 없습니다.</td></tr>
+									</c:if>
+								    <c:forEach items="${galleryList}" var="galleryList" varStatus="status">	
+								       <c:set var="regdate" value="${galleryList.regdate}"/>
+								       <c:set var="subject" value="${galleryList.subject}"/>
+								       <c:set var="category" value="${galleryList.category}"/>
+								       <tr>
+									      <td class="vt" scope="row">${galleryList.idx}</td>
+									      <td class="vt">
+										      <c:if test="${not empty galleryList.thumburl}">
+										     	 <a href="/admin/portfolioModify?idx=${galleryList.idx}"><img src="${galleryList.thumburl }"  style="width:80px;height:50px"/></a>
+										      </c:if>
+									      </td>
+									      <td class="vt">${fn:substring(regdate,0,10) }</td>
+									      <td class="vt"><a href="/admin/portfolioModify?idx=${galleryList.idx}" class="btn btn-info">관리</a></td>
+									    </tr>
+									</c:forEach>	   
+								  </tbody>
+								</table>
+                   		</div>
+                   </div>
+                  
 					
 					
-					<div class="alert alert-primary" role="alert">
-						포트폴리오 등록 현황 <br>
-						<span class="badge rounded-pill bg-primary">${galleryCount }</span>건 등록 중 <a href="#" class="alert-link"><span class="float-right">더보기</span></a> 
-   					</div>
-                     <table class="table mb-5">
-						  <thead class="table-success text-dark text-center">
-						    <tr>
-						      <th scope="col">#</th>
-						      <th scope="col">제목</th>
-						      <th scope="col">종류</th>
-						      <th scope="col">썸네일</th>
-						      <th scope="col">등록일</th>
-						      <th scope="col">관리</th>
-						    </tr>
-						  </thead>
-						  <tbody class="text-dark text-center">
-						   <c:if test="${empty galleryList}">
-						        <tr><td colspan="5" class="text-center vt">등록된 포트폴리오 갤러리가 없습니다.</td></tr>
-							</c:if>
-						    <c:forEach items="${galleryList}" var="galleryList" varStatus="status">	
-						       <c:set var="regdate" value="${galleryList.regdate}"/>
-						       <c:set var="subject" value="${galleryList.subject}"/>
-						       <c:set var="category" value="${galleryList.category}"/>
-						       <tr>
-							      <td class="vt" scope="row">${galleryList.idx}</td>
-							      <td class="vt"><a href="/admin/portfolioModify?idx=${galleryList.idx}">${fn:substring(subject,0,30)}...</a></td>
-							      <td class="vt" scope="row">
-							       <c:choose>
-							         <c:when test = "${category == 1}">
-							           	현수막
-							         </c:when>
-							         <c:when test = "${category == 2}">
-							            간판
-							         </c:when>
-							         <c:when test = "${category == 3}">
-							            조형물
-							         </c:when>
-							         <c:when test = "${category == 4}">
-							            행사.전시
-							         </c:when>
-							         <c:when test = "${category == 5}">
-							            기타
-							         </c:when>
-							      </c:choose>
-							      </td>
-							      <td class="vt">
-								      <c:if test="${not empty galleryList.thumburl}">
-								     	 <img src="${galleryList.thumburl }"  style="width:80px;height:50px"/>
-								      </c:if>
-							      </td>
-							      <td class="vt">${fn:substring(regdate,0,10) }</td>
-							      <td class="vt"><a href="/admin/portfolioModify?idx=${galleryList.idx}" class="btn btn-info">관리</a></td>
-							    </tr>
-							</c:forEach>	   
-						  </tbody>
-						</table>
 					
+				<%-- 	
 					<div class="alert alert-warning" role="alert">
 						롤링배너 등록 현황 <br>
 						<span class="badge rounded-pill bg-warning">${bannerCount }</span>건 등록 중 <a href="#" class="alert-link"><span class="float-right">더보기</span></a> 
@@ -247,7 +228,7 @@
 							    </tr>
 							</c:forEach>	   
 						  </tbody>
-						</table>
+						</table> --%>
                 </div>
                 <!-- /.container-fluid -->
 

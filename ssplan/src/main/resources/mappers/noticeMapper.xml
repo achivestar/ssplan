@@ -41,7 +41,7 @@
 	
 	<select id="getNoticeClientList" resultType="noticeVO">
 		<![CDATA[
-			SELECT * from ss_notice where idx > 0 and showYn = 'y' order by idx desc limit 3;
+			SELECT * from ss_notice where idx > 0 and showYn = 'y' order by idx desc limit 5;
 		]]>
 	</select>
 	

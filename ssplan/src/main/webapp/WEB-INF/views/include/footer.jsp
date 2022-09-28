@@ -5,6 +5,6 @@
         <div class="copyright">
           &copy; Copyright <strong><span>ssplan</span></strong>
         </div>
-        <div class="credits">Designed by <a href="#none">ssplan</a></div>
+        <div class="credits">Designed by <span style="color:rgb(55,179,237)">ssplan</span></div>
       </div>
 </footer>

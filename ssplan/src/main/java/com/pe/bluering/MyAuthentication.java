@@ -9,7 +9,7 @@ public class MyAuthentication extends Authenticator {
 	 
     public MyAuthentication(){
         String id = "kkameun@naver.com";
-        String pw = "qkagksmf12@#";
+        String pw = "qkagksmf123!@#";
         account = new PasswordAuthentication(id, pw);
     }
  
