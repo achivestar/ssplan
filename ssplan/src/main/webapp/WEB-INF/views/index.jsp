@@ -121,9 +121,10 @@
               <div class="alert alert-white" role="alert">
 				  <h4 class="alert-heading"><span style="color:#149ddd">SSPLAN</span></h4>
 				  <p style="line-height:2.5"><span style="font-size:20px">설</span>립 이래 개인 제작물 및 제주도의 다양한<br>
-				  행사 및 축제는 물론 국내 대기업의 각종 행사에 참여 하여<br>
-				  <span style="text-decoration:underline">전시기획 및 디자인 / 제작 설치하는 종합광고 대행사 입니다.</span> <br>
-				  제주도 내 이 분야 대표가 되기 위하여 항상
+				  행사 및 축제는 물론 국내 대기업의 각종 행사에<br>
+				  참여 하여 <span style="text-decoration:underline">전시기획 및 디자인 / 제작 설치하는<br>
+				  종합광고 대행사 입니다.</span> <br>
+				  제주도 내 이 분야 대표가 되기 위하여 항상<br>
 	              노력하고 최선을 다하고 있습니다.</p>
 				  <hr>
 				  <p class="mb-0"  style="line-height:2.5"> 
@@ -370,7 +371,7 @@
               <form id="form" class="php-email-form">
                 <div class="row">
                   <div class="form-group col-md-6">
-                    <label for="name">Your Name</label>
+                    <label for="name">이름</label>
                     <input
                       type="text"
                       name="name"
@@ -380,7 +381,7 @@
                     />
                   </div>
                   <div class="form-group col-md-6">
-                    <label for="name">Your Email</label>
+                    <label for="name">Email</label>
                     <input
                       type="email"
                       class="form-control"
@@ -391,7 +392,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="name">Subject</label>
+                  <label for="name">제목</label>
                   <input
                     type="text"
                     class="form-control"
